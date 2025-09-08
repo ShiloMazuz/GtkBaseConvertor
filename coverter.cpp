@@ -51,15 +51,44 @@ void printHexNumber(std::vector<int>& hexForm) {
         break;
       default:
         std::cout << hexForm[i-1];
-      break;
+        break;
     }
   }
   return;
 }
 
-int main() {
-  int num {6342};
-  std::vector hexNumber{decimalToHex(num)};
-  printHexNumber(hexNumber);
-  return 0;
+std::string hexVectorToString(std::vector<int> hexForm) {
+  std::string hexString {};
+  for(std::size_t i {hexForm.size()}; 0 != i; i--) {
+    switch (hexForm[i-1]) 
+    {
+      case 10:
+        hexString.push_back('A');
+        break;
+      case 11:
+        hexString.push_back('B');
+        break;
+      case 12:
+        hexString.push_back('C');
+        break;
+      case 13:
+        hexString.push_back('D');
+        break;
+      case 14:
+        hexString.push_back('E');
+        break;
+      case 15:
+        hexString.push_back('F');
+        break;
+      default:
+        char temp (hexForm[i-1]+48);
+        hexString.push_back(temp);
+        break;
+    }
+  }
+    return hexString;
+}
+
+std::string decimalToHexString(int num) {
+  return hexVectorToString(decimalToHex(num));
 }
