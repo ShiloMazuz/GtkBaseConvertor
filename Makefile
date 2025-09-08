@@ -1,8 +1,8 @@
 CXX = g++
-CXXFLAGS = -std=c++17 `pkg-config --cflags gtk+-3.0`
-LDFLAGS = `pkg-config --libs gtk+-3.0`
+CXXFLAGS = -std=c++17 `pkg-config --cflags gtkmm-3.0`
+LDFLAGS = `pkg-config --libs gtkmm-3.0`
 
-SRC = main.cpp
+SRC = main.cpp coverter.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = main
 
