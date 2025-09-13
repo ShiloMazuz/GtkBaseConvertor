@@ -3,4 +3,4 @@ decimalToBinary
 main
 main.o
 main_backup.cpp
-coverter.o
+converter.o
