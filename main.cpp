@@ -19,6 +19,9 @@ public:
         label.set_text("WAWI!!!");
         vbox.pack_start(label, Gtk::PACK_SHRINK);
 
+        labelBin.set_text("WAWI!!! (bin)");
+        vbox.pack_start(labelBin, Gtk::PACK_SHRINK);
+
         button.set_label("press this pls");
         vbox.pack_start(button, false, false, 0); 
         //the first false, disables centering the widget in the space it has available,
@@ -32,6 +35,7 @@ public:
         button.signal_clicked().connect(
             [&] {
                 label.set_text("Hex Value: " + decimalToHexString(entry.get_value_as_int()));
+                labelBin.set_text("Bin Value: " + decimalToBinString(entry.get_value_as_int()));
                 std::cout << decimalToHexString(entry.get_value_as_int()) << '\n';
                                }); //I need to figure out what the fuck happens here
         show_all_children();
@@ -41,6 +45,7 @@ private:
     Glib::RefPtr<Gtk::Adjustment> adjustment;
     Gtk::SpinButton entry;
     Gtk::Label label;
+    Gtk::Label labelBin;
     Gtk::Button button;
 };
 
