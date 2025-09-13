@@ -11,11 +11,17 @@ std::vector<bool> decimalToBinary (int num) {
   return binaryForm;
 }
 
-std::string binaryVectorToString(std::vector<int> binForm) {
+std::string binaryVectorToString(std::vector<bool> binForm) {
   std::string binString {};
   for(std::size_t i {binForm.size()}; 0 != i; i--) {
-    char temp (binForm[i-1]+48);
-    binString.push_back(temp);
+    switch (binForm[i-1])
+    {
+      case 1:
+        binString.push_back('1');
+        break;
+      case 0:
+        binString.push_back('0');
+    }
   }
   return binString;
 }
@@ -99,7 +105,7 @@ std::string hexVectorToString(std::vector<int> hexForm) {
         break;
     }
   }
-    return hexString;
+  return hexString;
 }
 
 std::string decimalToHexString(int num) {

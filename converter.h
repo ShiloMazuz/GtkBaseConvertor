@@ -6,7 +6,7 @@
 #include <string>
 
 std::vector<bool> decimalToBinary (int num);
-std::string binaryVectorToString(std::vector<int> binForm);
+std::string binaryVectorToString(std::vector<bool> binForm);
 std::string decimalToBinString(int num);
 std::vector<int> decimalToHex(int num);
 void printBinaryNumber(std::vector<bool>& binaryForm);
