@@ -31,7 +31,7 @@ public:
 
         button.signal_clicked().connect(
             [&] {
-                label.set_text(decimalToHexString(entry.get_value_as_int()));
+                label.set_text("Hex Value: " + decimalToHexString(entry.get_value_as_int()));
                 std::cout << decimalToHexString(entry.get_value_as_int()) << '\n';
                                }); //I need to figure out what the fuck happens here
         show_all_children();
