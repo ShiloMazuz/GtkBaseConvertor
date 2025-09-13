@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -std=c++17 `pkg-config --cflags gtkmm-3.0`
 LDFLAGS = `pkg-config --libs gtkmm-3.0`
 
-SRC = main.cpp coverter.cpp
+SRC = main.cpp converter.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = main
 
