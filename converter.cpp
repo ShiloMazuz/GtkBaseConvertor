@@ -111,3 +111,26 @@ std::string hexVectorToString(std::vector<int> hexForm) {
 std::string decimalToHexString(int num) {
   return hexVectorToString(decimalToHex(num));
 }
+
+std::vector<int> extractIpFromString(std::string IPAddr) {
+  std::string octatHolder {};
+  int octatNumber {0};
+  std::vector<int> IPAddrIntVector {};
+
+  for(std::size_t i {0}; i < IPAddr.size(); i++)
+  {
+    if(IPAddr.at(i) == '.') {
+      std::cout << "dot found" << '\n';
+      IPAddrIntVector.push_back(stoi(octatHolder));
+      octatHolder.clear();
+      octatNumber++;
+    }
+    else {
+      std::cout << "pushing back " << IPAddr.at(i) << '\n';
+      octatHolder.push_back(IPAddr.at(i));
+    }
+  }
+  std::cout << "exiting extractor" << '\n';
+  IPAddrIntVector.push_back(stoi(octatHolder));
+  return IPAddrIntVector;
+}

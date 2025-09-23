@@ -16,7 +16,7 @@ public:
         vbox.pack_start(entry, Gtk::PACK_SHRINK);
         //Gtk::PACK_SHRINK is equivilant to ...false, false, 0);
 
-        label.set_text("WAWI!!!");
+        label.set_text("WAWI!!! (hex)");
         vbox.pack_start(label, Gtk::PACK_SHRINK);
 
         labelBin.set_text("WAWI!!! (bin)");
