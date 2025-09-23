@@ -1,6 +1,5 @@
-converter
-decimalToBinary
+# ignore all .o files
+.o
+
+#ignore main binary
 main
-main.o
-main_backup.cpp
-converter.o
