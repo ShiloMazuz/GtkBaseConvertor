@@ -38,15 +38,37 @@ public:
                 labelBin.set_text("Bin Value: " + decimalToBinString(entry.get_value_as_int()));
                 std::cout << decimalToHexString(entry.get_value_as_int()) << '\n';
                                }); //I need to figure out what the fuck happens here
+        //ip convertor section
+        entryIpInput.set_placeholder_text("enter an ip address");
+        vbox.pack_start(entryIpInput, Gtk::PACK_SHRINK);
+
+        //label to show converted ip adress
+        labelIpBin.set_text("Bin ip:");
+        vbox.pack_start(labelIpBin, Gtk::PACK_SHRINK);
+
+        //button that converts ip address and prints labels
+        buttonIpConvert.set_label("press to convert ip to bin");
+        vbox.pack_start(buttonIpConvert, false, false, 0); 
+
+        buttonIpConvert.signal_clicked().connect(
+            [&] {
+                labelIpBin.set_text("Bin ip: " + convertedIpToBin(extractIpFromString(entryIpInput.get_text())));
+                               }); //I need to figure out what the fuck happens here
+
         show_all_children();
     }
 private:
     Gtk::Box vbox{Gtk::ORIENTATION_VERTICAL};
     Glib::RefPtr<Gtk::Adjustment> adjustment;
+    //number conversion widgets
     Gtk::SpinButton entry;
     Gtk::Label label;
     Gtk::Label labelBin;
     Gtk::Button button;
+    //ip conversion widgets
+    Gtk::Entry entryIpInput;
+    Gtk::Label labelIpBin;
+    Gtk::Button buttonIpConvert;
 };
 
 int main(int argc, char *argv[]) {

@@ -134,3 +134,13 @@ std::vector<int> extractIpFromString(std::string IPAddr) {
   IPAddrIntVector.push_back(stoi(octatHolder));
   return IPAddrIntVector;
 }
+
+std::string convertedIpToBin(std::vector<int> IpAddr) {
+  std::string convertedIp {};
+  for(size_t i {0}; i < IpAddr.size(); i++) {
+    convertedIp += binaryVectorToString(decimalToBinary(IpAddr[i]));
+    if(i < IpAddr.size()-1)
+      convertedIp.push_back('.');
+  }
+  return convertedIp;
+}

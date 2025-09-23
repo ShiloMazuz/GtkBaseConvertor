@@ -13,5 +13,7 @@ void printBinaryNumber(std::vector<bool>& binaryForm);
 void printHexNumber(std::vector<int>& hexForm);
 std::string hexVectorToString(std::vector<int> hexForm);
 std::string decimalToHexString(int num);
+std::vector<int> extractIpFromString(std::string IpAddr);
+std::string convertedIpToBin(std::vector<int> IpAddr);
 
 #endif
