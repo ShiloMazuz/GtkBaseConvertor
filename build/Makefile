@@ -6,7 +6,7 @@ SRC = main.cpp converter.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = main
 
-all: $(TARGET)
+all: check-deps $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CXX) $(OBJ) -o $(TARGET) $(LDFLAGS)
@@ -29,6 +29,10 @@ uninstall:
 	rm -f /usr/bin/BasedConverter
 	gtk-update-icon-cache usr/share/icons/hicolor/
 	update-desktop-database usr/share/applications/
+
+check-deps:
+	@pkg-config --exists gtkmm-3.0 || \
+	(echo "Error: gtkmm-3.0 is not installed. Please install libgtkmm-3.0-dev (Debian/Ubuntu) or gtkmm3-devel (Fedora/Arch)." && exit 1)
 
 clean:
 	rm -f $(OBJ) $(TARGET)
