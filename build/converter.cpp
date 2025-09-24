@@ -165,7 +165,7 @@ std::string prefixToSubnetString (int prefix) {
     prefix -= 8;
     minimumLength--;
   }
-  subnetMask += std::pow(2, prefix);
+  subnetMask += std::to_string(static_cast<int>(256-std::pow(2, 8-prefix)));
   minimumLength--;
   while(minimumLength > 0) {
     subnetMask += ".0";

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <gtkmm.h>
+#include <string>
 #include "converter.h"
 
 class MyWindow : public Gtk::Window {
@@ -46,6 +47,12 @@ public:
         labelIpBin.set_text("Bin ip:");
         vbox.pack_start(labelIpBin, Gtk::PACK_SHRINK);
 
+        entryPrefix.set_placeholder_text("prefix");
+        vbox.pack_start(entryPrefix, Gtk::PACK_SHRINK);
+
+        labelSubnetMask.set_text("Subnet Mask:");
+        vbox.pack_start(labelSubnetMask, Gtk::PACK_SHRINK);
+
         //button that converts ip address and prints labels
         buttonIpConvert.set_label("press to convert ip to bin");
         vbox.pack_start(buttonIpConvert, false, false, 0); 
@@ -53,6 +60,7 @@ public:
         buttonIpConvert.signal_clicked().connect(
             [&] {
                 labelIpBin.set_text("Bin ip: " + convertedIpToBin(extractIpFromString(entryIpInput.get_text())));
+                labelSubnetMask.set_text("Subnet Mask: " + prefixToSubnetString(std::stoi(entryPrefix.get_text())));
                                }); //I need to figure out what the fuck happens here
 
         show_all_children();
@@ -68,6 +76,8 @@ private:
     //ip conversion widgets
     Gtk::Entry entryIpInput;
     Gtk::Label labelIpBin;
+    Gtk::Entry entryPrefix;
+    Gtk::Label labelSubnetMask;
     Gtk::Button buttonIpConvert;
 };
 
