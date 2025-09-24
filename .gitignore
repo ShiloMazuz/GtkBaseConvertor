@@ -1,5 +1,5 @@
 # ignore all .o files
-.o
+*.o
 
 #ignore main binary
 main

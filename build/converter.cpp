@@ -1,7 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <string>
+#include "converter.h"
 
+//converts single number to a boolean vector
 std::vector<bool> decimalToBinary (int num) {
   std::vector<bool> binaryForm{};
   while(num>0) {
@@ -11,6 +10,7 @@ std::vector<bool> decimalToBinary (int num) {
   return binaryForm;
 }
 
+//converts boolean vector to a string
 std::string binaryVectorToString(std::vector<bool> binForm) {
   std::string binString {};
   for(std::size_t i {binForm.size()}; 0 != i; i--) {
@@ -26,6 +26,7 @@ std::string binaryVectorToString(std::vector<bool> binForm) {
   return binString;
 }
 
+//takes a number and returns binary form as a string
 std::string decimalToBinString(int num) {
   return binaryVectorToString(decimalToBinary(num));
 }
@@ -39,6 +40,7 @@ std::vector<int> decimalToHex(int num) {
   return hexForm;
 }
 
+//outputs boolean vector into terminal
 void printBinaryNumber(std::vector<bool>& binaryForm) {
   for(std::size_t i {binaryForm.size()}; 0 != i; i--) {
     std::cout << static_cast<int>(binaryForm[i-1]);
@@ -46,6 +48,7 @@ void printBinaryNumber(std::vector<bool>& binaryForm) {
   return;
 }
 
+//takes in an int vector and prints out as hex
 void printHexNumber(std::vector<int>& hexForm) {
   for(std::size_t i {hexForm.size()}; 0 != i; i--) {
     switch (hexForm[i-1]) 
@@ -76,6 +79,7 @@ void printHexNumber(std::vector<int>& hexForm) {
   return;
 }
 
+//takes int vector representing a hex number and returns a string
 std::string hexVectorToString(std::vector<int> hexForm) {
   std::string hexString {};
   for(std::size_t i {hexForm.size()}; 0 != i; i--) {
@@ -108,15 +112,16 @@ std::string hexVectorToString(std::vector<int> hexForm) {
   return hexString;
 }
 
+//takes in a number and returns it as hex string
 std::string decimalToHexString(int num) {
   return hexVectorToString(decimalToHex(num));
 }
 
+//takes string representing an IP and converts into int vector
 std::vector<int> extractIpFromString(std::string IPAddr) {
   std::string octatHolder {};
   int octatNumber {0};
   std::vector<int> IPAddrIntVector {};
-
   for(std::size_t i {0}; i < IPAddr.size(); i++)
   {
     if(IPAddr.at(i) == '.') {
@@ -135,12 +140,36 @@ std::vector<int> extractIpFromString(std::string IPAddr) {
   return IPAddrIntVector;
 }
 
+//takes int vector and converts into a binary form string
 std::string convertedIpToBin(std::vector<int> IpAddr) {
   std::string convertedIp {};
   for(size_t i {0}; i < IpAddr.size(); i++) {
+    if(IpAddr[i] != 0) {
     convertedIp += binaryVectorToString(decimalToBinary(IpAddr[i]));
+    }
+    else {
+      convertedIp.push_back('0');
+    }
     if(i < IpAddr.size()-1)
       convertedIp.push_back('.');
   }
   return convertedIp;
+}
+
+//convert a prefix to a subnet mask string
+std::string prefixToSubnetString (int prefix) {
+  int minimumLength {4};
+  std::string subnetMask {};
+  while(prefix > 8) {
+    subnetMask += "255.";
+    prefix -= 8;
+    minimumLength--;
+  }
+  subnetMask += std::pow(2, prefix);
+  minimumLength--;
+  while(minimumLength > 0) {
+    subnetMask += ".0";
+    minimumLength--;
+  }
+  return subnetMask;
 }
