@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=IP Convert
-Comment=converts Ip addresses between bases
-Exec=
-Icon=
+Name=BasedIP
+Comment=converts Ip addresses between bases 
+Exec= /usr/bin/BasedConverter
+Icon= /usr/share/icons/hicolor/256x256/apps/BasedIP.png
 Terminal=false
 Type=Application
 Categories=Utility
+Keywords=ip;converter;address
