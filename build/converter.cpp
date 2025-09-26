@@ -1,5 +1,13 @@
 #include "converter.h"
 
+bool isStringDigit(std::string str) {
+  for(auto& ch : str) {
+    if(!std::isdigit(ch))
+      return false;
+  }
+  return true;
+}
+
 //converts single number to a boolean vector
 std::vector<bool> decimalToBinary (int num) {
   std::vector<bool> binaryForm{};
@@ -119,6 +127,9 @@ std::string decimalToHexString(int num) {
 
 //takes string representing an IP and converts into int vector
 std::vector<int> extractIpFromString(std::string IPAddr) {
+  //early return if string is empty
+  if(IPAddr.empty())
+    return std::vector<int> {-1};
   std::string octatHolder {};
   int octatNumber {0};
   std::vector<int> IPAddrIntVector {};
@@ -131,6 +142,8 @@ std::vector<int> extractIpFromString(std::string IPAddr) {
       octatNumber++;
     }
     else {
+      if(!std::isdigit(IPAddr[i]))
+        return std::vector<int> {-1};
       std::cout << "pushing back " << IPAddr.at(i) << '\n';
       octatHolder.push_back(IPAddr.at(i));
     }
@@ -142,6 +155,8 @@ std::vector<int> extractIpFromString(std::string IPAddr) {
 
 //takes int vector and converts into a binary form string
 std::string convertedIpToBin(std::vector<int> IpAddr) {
+  if(IpAddr[0] == -1)
+    return "invalid IP address";
   std::string convertedIp {};
   for(size_t i {0}; i < IpAddr.size(); i++) {
     if(IpAddr[i] != 0) {
@@ -157,7 +172,14 @@ std::string convertedIpToBin(std::vector<int> IpAddr) {
 }
 
 //convert a prefix to a subnet mask string
-std::string prefixToSubnetString (int prefix) {
+std::string prefixToSubnetString (std::string prefixStr) {
+  if(
+    prefixStr.empty() ||
+    !isStringDigit(prefixStr)
+  )
+    return "invalid prefix";
+  int prefix { std::stoi(prefixStr) };
+  //end of prefunction checks
   int minimumLength {4};
   std::string subnetMask {};
   while(prefix > 8) {

@@ -60,7 +60,7 @@ public:
         buttonIpConvert.signal_clicked().connect(
             [&] {
                 labelIpBin.set_text("Bin ip: " + convertedIpToBin(extractIpFromString(entryIpInput.get_text())));
-                labelSubnetMask.set_text("Subnet Mask: " + prefixToSubnetString(std::stoi(entryPrefix.get_text())));
+                labelSubnetMask.set_text("Subnet Mask: " + prefixToSubnetString(entryPrefix.get_text()));
                                }); //I need to figure out what the fuck happens here
 
         show_all_children();
