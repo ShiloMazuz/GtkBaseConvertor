@@ -9,7 +9,7 @@ public:
         : adjustment(Gtk::Adjustment::create(0.0, 0.0, 10e9, 1.0, 10.0, 0.0)),
         entry(adjustment, 1.0, 0) // climb rate = 1.0, digits = 0
     {
-        set_title("test window");
+        set_title("Ip Converter");
         set_default_size(300, 100);
 
         vbox.set_spacing(10);
@@ -39,7 +39,7 @@ public:
                 labelBin.set_text("Bin Value: " + decimalToBinString(entry.get_value_as_int()));
                 std::cout << decimalToHexString(entry.get_value_as_int()) << '\n';
                                }); //I need to figure out what the fuck happens here
-        //ip convertor section
+        //ip converter section
         entryIpInput.set_placeholder_text("enter an ip address");
         vbox.pack_start(entryIpInput, Gtk::PACK_SHRINK);
 
