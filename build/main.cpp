@@ -41,7 +41,15 @@ private:
 int main(int argc, char *argv[]) {
     auto app = Gtk::Application::create(argc, argv, "org.gnome.typeconverter");
     //auto builder = Gtk::Builder::create_from_file("../styling/layout.ui");
-    auto builder = Gtk::Builder::create_from_file("../styling/layout.ui");
+    Glib::RefPtr<Gtk::Builder> builder {};
+    try {
+    builder = Gtk::Builder::create_from_file("/usr/share/basedIP/layout.ui");
+    }
+    catch(Glib::FileError& error) {
+    std::cout << "layout not found at /usr/share/basedIP/layout.ui, trying ../styling/layout.ui";
+    builder = Gtk::Builder::create_from_file("../styling/layout.ui");
+    }
+
     MyWindow* window = nullptr;
     builder->get_widget_derived("window", window);
     return app->run(*window);

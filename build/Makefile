@@ -20,6 +20,8 @@ install:
 	cp ../misc/converter.desktop /usr/share/applications/
 	cp ../assets/BasedIP.png /usr/share/icons/hicolor/256x256/apps/
 	cp ../build/main /usr/bin/BasedConverter
+	mkdir /usr/share/basedIP
+	cp ../styling/layout.ui /usr/share/basedIP/
 	gtk-update-icon-cache /usr/share/icons/hicolor
 	update-desktop-database /usr/share/applications/
 
@@ -27,6 +29,7 @@ uninstall:
 	rm -f /usr/share/applications/converter.desktop
 	rm -f /usr/share/icons/hicolor/256x256/apps/BasedIP.png
 	rm -f /usr/bin/BasedConverter
+	rm -rf /usr/share/basedIP
 	gtk-update-icon-cache usr/share/icons/hicolor/
 	update-desktop-database usr/share/applications/
 
