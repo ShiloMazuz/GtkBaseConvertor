@@ -1,63 +1,65 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <object class="GtkWindow" id="window">
     <child>
-    <object class="GtkGrid" id="grid">
-      <property name="row-spacing">10</property>
-      <property name="column-spacing">10</property>
+      <object class="GtkGrid" id="grid">
+        <property name="row-spacing">10</property>
+        <property name="column-spacing">10</property>
 
-      <child>
-        <object class="GtkEntry" id="entryIpInput">
-          <property name="placeholder-text">Enter an IP address</property>
-          </object>
-        <packing>
-          <property name="left-attach">0</property>
-          <property name="top-attach">0</property>
-          </packing>
-        </child>
+        <child>
+          <object class="GtkEntry" id="entryIpInput">
+            <property name="placeholder-text">Enter an IP address</property>
+            <property name="width-chars">41</property>
+            </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+            </packing>
+          </child>
 
-      <child>
-        <object class="GtkEntry" id="entryPrefix">
-          <property name="placeholder-text">prefix</property>
-          </object>
-        <packing>
-          <property name="left-attach">1</property>
-          <property name="top-attach">0</property>
-          </packing>
-        </child>
+        <child>
+          <object class="GtkEntry" id="entryPrefix">
+            <property name="placeholder-text">mask</property>
+            <property name="width-chars">4</property>
+            </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
+            </packing>
+          </child>
 
-      <child>
-        <object class="GtkLabel" id="labelIpBin">
-          <property name="label">Bin ip:</property>
-          </object>
-        <packing>
-          <property name="left-attach">0</property>
-          <property name="top-attach">1</property>
-          </packing>
-        </child>
+        <child>
+          <object class="GtkLabel" id="labelIpBin">
+            <property name="label">Bin ip:</property>
+            <property name="width-chars">45</property>
+            </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+            </packing>
+          </child>
 
-      <child>
-        <object class="GtkLabel" id="labelSubnetMask">
-          <property name="label">Subnet Mask:</property>
-          </object>
-        <packing>
-          <property name="left-attach">0</property>
-          <property name="top-attach">2</property>
-          </packing>
-        </child>
+        <child>
+          <object class="GtkLabel" id="labelSubnetMask">
+            <property name="label">Subnet Mask:</property>
+            </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+            </packing>
+          </child>
 
-      <child>
-        <object class="GtkButton" id="buttonIpConvert">
-          <property name="label">press to convert ip to bin</property>
-          </object>
-        <packing>
-          <property name="left-attach">0</property>
-          <property name="top-attach">3</property>
-          </packing>
-        </child>
+        <child>
+          <object class="GtkButton" id="buttonIpConvert">
+            <property name="label">press to convert ip to bin</property>
+            </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">3</property>
+            </packing>
+          </child>
 
-      </object>
+        </object>
       </child>
     </object>
   </interface>
