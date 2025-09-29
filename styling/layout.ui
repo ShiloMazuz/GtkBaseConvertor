@@ -50,12 +50,22 @@
           </child>
 
         <child>
+          <object class="GtkLabel" id="labelAvilableHosts">
+            <property name="label">Avilable Hosts:</property>
+            </object>
+            <packing>
+              <property name="left-attach">0</property>
+              <property name="top-attach">3</property>
+              </packing>
+        </child>
+
+        <child>
           <object class="GtkButton" id="buttonIpConvert">
             <property name="label">press to convert ip to bin</property>
             </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">3</property>
+            <property name="top-attach">4</property>
             </packing>
           </child>
 

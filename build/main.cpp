@@ -18,12 +18,14 @@ public:
         builder->get_widget("entryPrefix", entryPrefix);
         builder->get_widget("labelIpBin", labelIpBin);
         builder->get_widget("labelSubnetMask", labelSubnetMask);
+        builder->get_widget("labelAvilableHosts", labelAvilableHosts);
         builder->get_widget("buttonIpConvert", buttonIpConvert);
 
         buttonIpConvert->signal_clicked().connect(
             [&] {
                 labelIpBin->set_text("Bin ip: " + convertedIpToBin(extractIpFromString(entryIpInput->get_text())));
                 labelSubnetMask->set_text("Subnet Mask: " + prefixToSubnetString(entryPrefix->get_text()));
+                labelAvilableHosts->set_text("Avilable Hosts: " + prefixToHostsString(entryPrefix->get_text()));
                                }); //I need to figure out what the fuck happens here
 
         show_all_children();
@@ -35,6 +37,7 @@ private:
     Gtk::Entry* entryPrefix;
     Gtk::Label* labelIpBin;
     Gtk::Label* labelSubnetMask;
+    Gtk::Label* labelAvilableHosts;
     Gtk::Button* buttonIpConvert;
 };
 

@@ -18,6 +18,7 @@ std::string       decimalToHexString(int num);
 std::vector<int>  extractIpFromString(std::string IpAddr);
 std::string       convertedIpToBin(std::vector<int> IpAddr);
 std::string       prefixToSubnetString (std::string prefixStr);
+std::string       prefixToHostsString (std::string prefixStr);
 
 //change naming format?
 //ipToString
