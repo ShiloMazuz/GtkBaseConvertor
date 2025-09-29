@@ -195,3 +195,14 @@ std::string prefixToSubnetString (std::string prefixStr) {
   }
   return subnetMask;
 }
+
+std::string prefixHostsString(std::string prefixStr) {
+  if(
+    prefixStr.empty() ||
+    !isStringDigit(prefixStr)
+  )
+    return "invalid prefix";
+  int prefix { std::stoi(prefixStr) };
+  std::string avilableHosts { std::to_string(static_cast<int>(std::pow(2, 32-prefix)))};
+  return avilableHosts;
+}
