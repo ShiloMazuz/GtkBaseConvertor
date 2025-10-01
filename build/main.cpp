@@ -14,6 +14,7 @@ public:
         set_default_size(300, 100);
 
         builder->get_widget("grid", grid);
+        builder->get_widget("box", box);
         builder->get_widget("entryIpInput", entryIpInput);
         builder->get_widget("entryPrefix", entryPrefix);
         builder->get_widget("labelIpBin", labelIpBin);
@@ -33,6 +34,7 @@ public:
 private:
     Gtk::Grid* grid;
     Glib::RefPtr<Gtk::Adjustment> adjustment;
+    Gtk::Box* box;
     Gtk::Entry* entryIpInput;
     Gtk::Entry* entryPrefix;
     Gtk::Label* labelIpBin;
