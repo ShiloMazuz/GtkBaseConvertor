@@ -33,3 +33,5 @@ make install
     - binary ip to decimal ip
     - ip + mask to network range
 - possible support for IPv6 
+- possible theming support
+- possible design improvements
