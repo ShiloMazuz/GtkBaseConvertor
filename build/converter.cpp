@@ -207,3 +207,14 @@ std::string prefixToHostsString(std::string prefixStr) {
   std::cout << avilableHosts << " hosts avilable";
   return avilableHosts;
 }
+
+std::string hostsToPrefixString (std::string hostsStr) {
+if(
+    hostsStr.empty() ||
+    !isStringDigit(hostsStr)
+  )
+    return "invalid input";
+  int hosts{std::stoi(hostsStr)};
+  int requiredPrefix(static_cast<int>(std::log2(hosts+1)+1));
+  return std::to_string(requiredPrefix);
+}

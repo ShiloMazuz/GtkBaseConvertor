@@ -19,6 +19,7 @@ std::vector<int>  extractIpFromString(std::string IpAddr);
 std::string       convertedIpToBin(std::vector<int> IpAddr);
 std::string       prefixToSubnetString (std::string prefixStr);
 std::string       prefixToHostsString (std::string prefixStr);
+std::string       hostsToPrefixString(std::string hostsStr);
 
 //change naming format?
 //ipToString
