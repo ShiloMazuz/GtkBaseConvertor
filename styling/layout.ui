@@ -14,7 +14,7 @@
               <object class="GtkEntry" id="entryIpInput">
                 <property name="placeholder-text">Enter an IP address</property>
                 <property name="width-chars">41</property>
-                <property name="hexpand">false</property>
+                <property name="hexpand">true</property>
                 </object>
               <packing>
                 <!-- 
@@ -66,8 +66,8 @@
           </child>
 
         <child>
-          <object class="GtkLabel" id="labelAvilableHosts">
-            <property name="label">Avilable Hosts:</property>
+          <object class="GtkLabel" id="labelAvailableHosts">
+            <property name="label">Available Hosts:</property>
             <property name="hexpand">false</property>
             </object>
             <packing>

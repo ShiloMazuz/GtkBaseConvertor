@@ -19,7 +19,7 @@ public:
         builder->get_widget("entryPrefix", entryPrefix);
         builder->get_widget("labelIpBin", labelIpBin);
         builder->get_widget("labelSubnetMask", labelSubnetMask);
-        builder->get_widget("labelAvilableHosts", labelAvilableHosts);
+        builder->get_widget("labelAvailableHosts", labelAvailableHosts);
         builder->get_widget("buttonIpConvert", buttonIpConvert);
         builder->get_widget("entryHostsWanted", entryHostsWanted);
 
@@ -43,7 +43,7 @@ private:
     Gtk::Entry* entryPrefix;
     Gtk::Label* labelIpBin;
     Gtk::Label* labelSubnetMask;
-    Gtk::Label* labelAvilableHosts;
+    Gtk::Label* labelAvailableHosts;
     Gtk::Entry* entryHostsWanted;
     Gtk::Button* buttonIpConvert;
 };
