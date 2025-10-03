@@ -215,6 +215,6 @@ if(
   )
     return "invalid input";
   int hosts{std::stoi(hostsStr)};
-  int requiredPrefix(static_cast<int>(std::log2(hosts+1)+1));
+  int requiredPrefix(static_cast<int>(32-std::log2(hosts+2)));
   return std::to_string(requiredPrefix);
 }
