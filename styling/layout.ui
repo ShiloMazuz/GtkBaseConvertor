@@ -76,6 +76,17 @@
               </packing>
         </child>
 
+            <child>
+              <object class="GtkEntry" id="entryHostsWanted">
+                <property name="placeholder-text">enter desired host amount</property>
+                <property name="hexpand">true</property>
+                </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">4</property>
+            </packing>
+              </child>
+        
         <child>
           <object class="GtkButton" id="buttonIpConvert">
             <property name="label">press to convert ip to bin</property>
@@ -83,7 +94,7 @@
             </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">4</property>
+            <property name="top-attach">5</property>
             </packing>
           </child>
 
