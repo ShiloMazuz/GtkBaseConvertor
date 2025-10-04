@@ -203,7 +203,10 @@ std::string prefixToHostsString(std::string prefixStr) {
   )
     return "invalid prefix";
   int prefix { std::stoi(prefixStr) };
-  std::string avilableHosts { std::to_string(static_cast<int>(std::pow(2, 32-prefix)))};
+  int hostsAvilable {static_cast<int>(std::pow(2, 32-prefix))};
+  if(hostsAvilable >= 2)
+    hostsAvilable -= 2;
+  std::string avilableHosts { std::to_string(hostsAvilable)};
   std::cout << avilableHosts << " hosts avilable";
   return avilableHosts;
 }

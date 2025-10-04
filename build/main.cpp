@@ -29,7 +29,7 @@ public:
                 if(!(entryHostsWanted->get_text().empty())) {
                     entryPrefix->set_text(hostsToPrefixString(entryHostsWanted->get_text()));
                 }
-                labelAvilableHosts->set_text("Avilable Hosts: " + prefixToHostsString(entryPrefix->get_text()));
+                labelAvailableHosts->set_text("Available Hosts: " + prefixToHostsString(entryPrefix->get_text()));
                 labelSubnetMask->set_text("Subnet Mask: " + prefixToSubnetString(entryPrefix->get_text()));
                                }); //I need to figure out what the fuck happens here
 
