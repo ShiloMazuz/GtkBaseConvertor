@@ -26,11 +26,16 @@ std::string binaryVectorToString(std::vector<bool> binForm) {
     {
       case 1:
         binString.push_back('1');
+        std::cout << "pushing back 1";
         break;
       case 0:
         binString.push_back('0');
+        std::cout << "pushing back 0";
     }
   }
+    while(binString.size() < 8) {
+      binString = "0" + binString;
+    }
   return binString;
 }
 
@@ -150,6 +155,10 @@ std::vector<int> extractIpFromString(std::string IPAddr) {
   }
   std::cout << "exiting extractor" << '\n';
   IPAddrIntVector.push_back(stoi(octatHolder));
+  for(std::size_t i {0}; i < IPAddrIntVector.size(); i++) {
+  if(IPAddrIntVector[i] > 255 || IPAddrIntVector[i] < 0)
+    return std::vector<int> {-1};
+  }
   return IPAddrIntVector;
 }
 
@@ -163,7 +172,7 @@ std::string convertedIpToBin(std::vector<int> IpAddr) {
     convertedIp += binaryVectorToString(decimalToBinary(IpAddr[i]));
     }
     else {
-      convertedIp.push_back('0');
+      convertedIp += "00000000";
     }
     if(i < IpAddr.size()-1)
       convertedIp.push_back('.');
@@ -221,3 +230,20 @@ if(
   int requiredPrefix(static_cast<int>(32-std::log2(hosts+2)));
   return std::to_string(requiredPrefix);
 }
+
+struct limits
+{
+  std::string networkAddress {};
+  std::string broadcastAddress {};
+};
+
+//limits ipAndPrefixToLimits (std::string ipAddrStr, std::string prefixStr) {
+//  std::vector<int> ipAddr {extractIpFromString ipAddrStr};
+//  if(ipAddr[0] == -1);
+//        return ("invalid IP address","invalid prefix");
+//
+//  if(prefixStr.empty() || !isStringDigit(prefixStr))
+//        return ("invalid IP address","invalid prefix");
+//  std::stoi(prefixStr);
+//
+//}
