@@ -20,7 +20,8 @@ std::string       convertedIpToBin(std::vector<int> IpAddr);
 std::string       prefixToSubnetString (std::string prefixStr);
 std::string       prefixToHostsString (std::string prefixStr);
 std::string       hostsToPrefixString(std::string hostsStr);
-
+std::string       prefixToBinarySubnet(std::string prefixStr);
+std::string       findNetworkAddress(std::string ipAddrStr, std::string prefixStr);
 //change naming format?
 //ipToString
 //stringToip

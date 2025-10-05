@@ -231,11 +231,31 @@ if(
   return std::to_string(requiredPrefix);
 }
 
-struct limits
-{
-  std::string networkAddress {};
-  std::string broadcastAddress {};
-};
+std::string prefixToBinarySubnet(std::string prefixStr) {
+  if(
+    prefixStr.empty() ||
+    !isStringDigit(prefixStr)
+  )
+    return "invalid subnet mask";
+  int prefix { std::stoi(prefixStr) };
+  std::string subnetBinary {};
+  for(std::size_t n {0}; n < 32; n++) {
+    if(n < prefix)
+      subnetBinary.push_back('1');
+
+    else
+      subnetBinary.push_back('0');
+    if(static_cast<int>((n+1)%8) == 0)
+      subnetBinary.push_back('.');
+  }
+  return subnetBinary;
+}
+
+std::string findNetworkAddress(std::string ipAddrStr, std::string prefixStr) {
+  std::string binaryIpAddr { prefixToBinarySubnet(prefixStr) };
+  [[maybe_unused]] std::string networkAddressStr {};
+  return networkAddressStr;
+}
 
 //limits ipAndPrefixToLimits (std::string ipAddrStr, std::string prefixStr) {
 //  std::vector<int> ipAddr {extractIpFromString ipAddrStr};
