@@ -26,16 +26,17 @@ std::string binaryVectorToString(std::vector<bool> binForm) {
     {
       case 1:
         binString.push_back('1');
-        std::cout << "pushing back 1";
+        std::cout << "pushing back 1\n";
         break;
       case 0:
         binString.push_back('0');
-        std::cout << "pushing back 0";
+        std::cout << "pushing back 0\n";
     }
   }
     while(binString.size() < 8) {
       binString = "0" + binString;
     }
+  std::cout << "exiting binaryVectorToString function\n";
   return binString;
 }
 
@@ -177,6 +178,7 @@ std::string convertedIpToBin(std::vector<int> IpAddr) {
     if(i < IpAddr.size()-1)
       convertedIp.push_back('.');
   }
+  std::cout << convertedIp << '\n';
   return convertedIp;
 }
 
@@ -216,7 +218,7 @@ std::string prefixToHostsString(std::string prefixStr) {
   if(hostsAvilable >= 2)
     hostsAvilable -= 2;
   std::string avilableHosts { std::to_string(hostsAvilable)};
-  std::cout << avilableHosts << " hosts avilable";
+  std::cout << avilableHosts << " hosts avilable\n";
   return avilableHosts;
 }
 
@@ -232,29 +234,99 @@ if(
 }
 
 std::string prefixToBinarySubnet(std::string prefixStr) {
-  if(
-    prefixStr.empty() ||
-    !isStringDigit(prefixStr)
-  )
+  if( prefixStr.empty() || !isStringDigit(prefixStr) )
     return "invalid subnet mask";
+
   int prefix { std::stoi(prefixStr) };
   std::string subnetBinary {};
-  for(std::size_t n {0}; n < 32; n++) {
-    if(n < prefix)
+
+  for(std::size_t n {1}; n <= 32; n++) {
+    if(n <= prefix)
       subnetBinary.push_back('1');
 
     else
       subnetBinary.push_back('0');
-    if(static_cast<int>((n+1)%8) == 0)
+
+    if(static_cast<int>(n%8 == 0) && n != 32)
       subnetBinary.push_back('.');
   }
   return subnetBinary;
 }
 
+std::vector<std::string> extractBinaryIpString (std::string binIp) {
+  std::vector<std::string> extractedIp (4);
+  int octatCounter {0};
+  for(std::size_t i {0}; i < binIp.size(); i++) {
+    switch (binIp.at(i)) {
+      case '0':
+        std::cout << "[extractBinaryIpString] pushing back 0" << '\n';
+        extractedIp[octatCounter].push_back('0');
+        break;
+      case '1':
+        std::cout << "[extractBinaryIpString] pushing back 1" << '\n';
+        extractedIp[octatCounter].push_back('1');
+        break;
+      case '.':
+        std::cout << "[extractBinaryIpString] octatCounter++" << '\n';
+        octatCounter++;
+        break;
+    }
+  }
+  std::cout << "binary IP address successfully extracted\n";
+  return extractedIp;
+}
+
+std::string extractedBinIpToDecimal (std::vector<std::string> extractedBinIp) {
+  std::string decimalIpAddr {};
+  std::cout << "[extractedBinIpToDecimal] extractedBinIp.size() = " << extractedBinIp.size() << '\n';
+  for(std::size_t n {0}; n < extractedBinIp.size(); n++) {
+  int octatBuffer {};
+  std::cout << "[extractedBinIpToDecimal] extractedBinIp[" << n << "].size() = " << extractedBinIp[n].size() << '\n';
+    for(std::size_t i {0}; i < extractedBinIp[n].size(); i++) {
+      if(extractedBinIp[n].at(i) == '1') {
+        octatBuffer += static_cast<int>(std::pow(2, extractedBinIp[n].size()-(i+1)));
+        std::cout << "octat buffer now equals " << octatBuffer << '\n';
+      }
+    }
+    decimalIpAddr += std::to_string(octatBuffer);
+    if(n+1 < extractedBinIp.size()) {
+      std::cout << "n+1 = " << n+1 << '\n';
+      std::cout << "[extractedBinIpToDecimal] pushing back ." << '\n';
+      decimalIpAddr += '.';
+    }
+  }
+  std::cout << "[extractedBinIpToDecimal] exiting function, decimalIpAddr = " << decimalIpAddr << '\n';
+  return decimalIpAddr;
+}
+
+std::string binIpToDecimal (std::string binIp) {
+  return extractedBinIpToDecimal(extractBinaryIpString(binIp));
+}
+
 std::string findNetworkAddress(std::string ipAddrStr, std::string prefixStr) {
-  std::string binaryIpAddr { prefixToBinarySubnet(prefixStr) };
-  [[maybe_unused]] std::string networkAddressStr {};
-  return networkAddressStr;
+  std::cout << "entering findNetworkAddress function\n";
+  std::string binarySubnetMask { prefixToBinarySubnet(prefixStr) };
+  std::cout << "converted prefix to binary subnet mask\n";
+  std::string binaryIpAddr { convertedIpToBin(extractIpFromString(ipAddrStr))};
+  std::cout << "converted ip address to binary\n";
+  std::string binaryNetworkAddress {};
+
+  std::cout << "using AND gate on IP and SubnetMask\n";
+  std::cout << "binarySubnetMask.size() = " << binarySubnetMask.size() << '\n';
+  std::cout << "binaryIpAddr.size() = " << binaryIpAddr.size() << '\n';
+  for(std::size_t i {0}; i < binarySubnetMask.size(); i++) {
+    std::cout << " i = " << i << '\n';
+    if(binaryIpAddr.at(i) == binarySubnetMask.at(i)) {
+      std::cout << "pushing back " << binaryIpAddr.at(i) << '\n';
+      binaryNetworkAddress.push_back(binaryIpAddr.at(i));
+    }
+    else {
+      std::cout << "pushing back 0" << '\n';
+      binaryNetworkAddress.push_back('0');
+    }
+  }
+  std::cout << "converting binaryNetworkAddress to decimal (" << binaryNetworkAddress << ")\n";
+  return binIpToDecimal(binaryNetworkAddress);
 }
 
 //limits ipAndPrefixToLimits (std::string ipAddrStr, std::string prefixStr) {

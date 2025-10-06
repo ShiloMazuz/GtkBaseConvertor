@@ -21,6 +21,9 @@ std::string       prefixToSubnetString (std::string prefixStr);
 std::string       prefixToHostsString (std::string prefixStr);
 std::string       hostsToPrefixString(std::string hostsStr);
 std::string       prefixToBinarySubnet(std::string prefixStr);
+std::vector<std::string> extractBinaryIpString (std::string binIp);
+std::string       extractedBinIpToDecimal (std::vector<std::string> binIp);
+std::string       binIpToDecimal (std::string binIp);
 std::string       findNetworkAddress(std::string ipAddrStr, std::string prefixStr);
 //change naming format?
 //ipToString
