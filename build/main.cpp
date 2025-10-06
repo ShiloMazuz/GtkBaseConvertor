@@ -19,6 +19,7 @@ public:
         builder->get_widget("entryPrefix", entryPrefix);
         builder->get_widget("labelIpBin", labelIpBin);
         builder->get_widget("labelSubnetMask", labelSubnetMask);
+        builder->get_widget("labelNetworkAddress", labelNetworkAddress);
         builder->get_widget("labelAvailableHosts", labelAvailableHosts);
         builder->get_widget("buttonIpConvert", buttonIpConvert);
         builder->get_widget("entryHostsWanted", entryHostsWanted);
@@ -31,6 +32,7 @@ public:
                 }
                 labelAvailableHosts->set_text("Available Hosts: " + prefixToHostsString(entryPrefix->get_text()));
                 labelSubnetMask->set_text("Subnet Mask: " + prefixToSubnetString(entryPrefix->get_text()));
+                labelNetworkAddress->set_text("Network Address: " + findNetworkAddress(entryIpInput->get_text(), entryPrefix->get_text()));
                                }); //I need to figure out what the fuck happens here
 
         show_all_children();
@@ -43,6 +45,8 @@ private:
     Gtk::Entry* entryPrefix;
     Gtk::Label* labelIpBin;
     Gtk::Label* labelSubnetMask;
+    Gtk::Label* labelNetworkAddress;
+    //Gtk::Label* labelBroadcastAddress;
     Gtk::Label* labelAvailableHosts;
     Gtk::Entry* entryHostsWanted;
     Gtk::Button* buttonIpConvert;
