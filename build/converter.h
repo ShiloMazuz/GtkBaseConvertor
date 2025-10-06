@@ -25,6 +25,7 @@ std::vector<std::string> extractBinaryIpString (std::string binIp);
 std::string       extractedBinIpToDecimal (std::vector<std::string> binIp);
 std::string       binIpToDecimal (std::string binIp);
 std::string       findNetworkAddress(std::string ipAddrStr, std::string prefixStr);
+std::string       findBroadcastAddress(std::string ipAddrStr, std::string prefixStr);
 //change naming format?
 //ipToString
 //stringToip

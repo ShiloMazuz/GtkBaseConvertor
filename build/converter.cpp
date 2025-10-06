@@ -329,13 +329,33 @@ std::string findNetworkAddress(std::string ipAddrStr, std::string prefixStr) {
   return binIpToDecimal(binaryNetworkAddress);
 }
 
-//limits ipAndPrefixToLimits (std::string ipAddrStr, std::string prefixStr) {
-//  std::vector<int> ipAddr {extractIpFromString ipAddrStr};
-//  if(ipAddr[0] == -1);
-//        return ("invalid IP address","invalid prefix");
-//
-//  if(prefixStr.empty() || !isStringDigit(prefixStr))
-//        return ("invalid IP address","invalid prefix");
-//  std::stoi(prefixStr);
-//
-//}
+std::string findBroadcastAddress(std::string ipAddrStr, std::string prefixStr) {
+  std::cout << "entering findBroadcastAddress function\n";
+  std::string binarySubnetMask { prefixToBinarySubnet(prefixStr) };
+  std::cout << "converted prefix to binary subnet mask\n";
+  std::string binaryIpAddr { convertedIpToBin(extractIpFromString(ipAddrStr))};
+  std::cout << "converted ip address to binary\n";
+  std::string binaryBroadcastAddress {};
+
+  std::cout << "using AND gate on IP and SubnetMask\n";
+  std::cout << "binarySubnetMask.size() = " << binarySubnetMask.size() << '\n';
+  std::cout << "binaryIpAddr.size() = " << binaryIpAddr.size() << '\n';
+
+  for(std::size_t i {0}; i < binarySubnetMask.size(); i++) {
+    std::cout << " i = " << i << '\n';
+    if(binarySubnetMask.at(i) == '0') {
+      std::cout << "pushing back 1" << binaryIpAddr.at(i) << '\n';
+      binaryBroadcastAddress.push_back('1');
+    }
+    else if(binaryIpAddr.at(i) == binarySubnetMask.at(i)) {
+      std::cout << "pushing back " << binaryIpAddr.at(i) << '\n';
+      binaryBroadcastAddress.push_back(binaryIpAddr.at(i));
+    }
+    else {
+      std::cout << "pushing back 0" << '\n';
+      binaryBroadcastAddress.push_back('0');
+    }
+  }
+  std::cout << "converting binaryBroadcastAddress to decimal (" << binaryBroadcastAddress << ")\n";
+  return binIpToDecimal(binaryBroadcastAddress);
+}
