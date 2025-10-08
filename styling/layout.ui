@@ -5,11 +5,12 @@
       <object class="GtkGrid" id="grid">
         <property name="row-spacing">10</property>
         <property name="column-spacing">10</property>
+        <property name="border-width">10</property>
 
         <child>
           <object class="GtkBox" id="box"> 
             <property name="orientation">horizontal</property>
-
+            <property name="spacing">10</property>
             <child>
               <object class="GtkEntry" id="entryIpInput">
                 <property name="placeholder-text">Enter an IP address</property>
@@ -28,7 +29,7 @@
             <child>
               <object class="GtkEntry" id="entryPrefix">
                 <property name="placeholder-text">mask</property>
-                <property name="width-chars">4</property>
+                <property name="width-chars">6</property>
                 <property name="hexpand">false</property>
                 </object>
               <packing>
@@ -47,6 +48,7 @@
             <property name="label">Bin ip:</property>
             <property name="width-chars">45</property>
             <property name="hexpand">false</property>
+            <property name="xalign">0.0</property>
             </object>
           <packing>
             <property name="left-attach">0</property>
@@ -58,6 +60,7 @@
           <object class="GtkLabel" id="labelSubnetMask">
             <property name="label">Subnet Mask:</property>
             <property name="hexpand">false</property>
+            <property name="xalign">0.0</property>
             </object>
           <packing>
             <property name="left-attach">0</property>
@@ -69,6 +72,7 @@
           <object class="GtkLabel" id="labelNetworkAddress">
             <property name="label">Network Address:</property>
             <property name="hexpand">false</property>
+            <property name="xalign">0.0</property>
             </object>
             <packing>
               <property name="left-attach">0</property>
@@ -80,6 +84,7 @@
           <object class="GtkLabel" id="labelBroadcastAddress">
             <property name="label">Broadcast Address:</property>
             <property name="hexpand">false</property>
+            <property name="xalign">0.0</property>
             </object>
             <packing>
               <property name="left-attach">0</property>
@@ -91,6 +96,7 @@
           <object class="GtkLabel" id="labelAvailableHosts">
             <property name="label">Available Hosts:</property>
             <property name="hexpand">false</property>
+            <property name="xalign">0.0</property>
             </object>
             <packing>
               <property name="left-attach">0</property>
