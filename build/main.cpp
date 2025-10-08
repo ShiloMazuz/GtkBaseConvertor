@@ -10,7 +10,7 @@ public:
         : adjustment(Gtk::Adjustment::create(0.0, 0.0, 10e9, 1.0, 10.0, 0.0))
         , Gtk::Window(cobject)
     {
-        set_title("Ip Converter");
+        set_title("BasedIP");
         set_default_size(300, 100);
 
         builder->get_widget("grid", grid);
@@ -27,7 +27,7 @@ public:
 
         buttonIpConvert->signal_clicked().connect(
             [&] {
-                labelIpBin->set_text("Bin ip: " + convertedIpToBin(extractIpFromString(entryIpInput->get_text())));
+                labelIpBin->set_text("Bin IP: " + convertedIpToBin(extractIpFromString(entryIpInput->get_text())));
                 if(!(entryHostsWanted->get_text().empty())) {
                     entryPrefix->set_text(hostsToPrefixString(entryHostsWanted->get_text()));
                 }

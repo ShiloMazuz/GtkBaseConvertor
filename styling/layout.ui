@@ -28,7 +28,7 @@
 
             <child>
               <object class="GtkEntry" id="entryPrefix">
-                <property name="placeholder-text">mask</property>
+                <property name="placeholder-text">Mask</property>
                 <property name="width-chars">6</property>
                 <property name="hexpand">false</property>
                 </object>
@@ -45,7 +45,7 @@
 
         <child>
           <object class="GtkLabel" id="labelIpBin">
-            <property name="label">Bin ip:</property>
+            <property name="label">Bin IP:</property>
             <property name="width-chars">45</property>
             <property name="hexpand">false</property>
             <property name="xalign">0.0</property>
@@ -106,7 +106,7 @@
 
             <child>
               <object class="GtkEntry" id="entryHostsWanted">
-                <property name="placeholder-text">enter desired host amount</property>
+                <property name="placeholder-text">Enter desired host amount</property>
                 <property name="hexpand">true</property>
                 </object>
           <packing>
