@@ -45,10 +45,11 @@
 
         <child>
           <object class="GtkLabel" id="labelIpBin">
-            <property name="label">Bin IP:</property>
+            <property name="label">&lt;b&gt;Bin IP:&lt;/b&gt;</property>
             <property name="width-chars">45</property>
             <property name="hexpand">false</property>
             <property name="xalign">0.0</property>
+            <property name="use-markup">true</property>
             </object>
           <packing>
             <property name="left-attach">0</property>
@@ -58,9 +59,10 @@
 
         <child>
           <object class="GtkLabel" id="labelSubnetMask">
-            <property name="label">Subnet Mask:</property>
+            <property name="label">&lt;b&gt;Subnet Mask:&lt;/b&gt;</property>
             <property name="hexpand">false</property>
             <property name="xalign">0.0</property>
+            <property name="use-markup">true</property>
             </object>
           <packing>
             <property name="left-attach">0</property>
@@ -70,9 +72,10 @@
 
         <child>
           <object class="GtkLabel" id="labelNetworkAddress">
-            <property name="label">Network Address:</property>
+            <property name="label">&lt;b&gt;Network Address:&lt;/b&gt;</property>
             <property name="hexpand">false</property>
             <property name="xalign">0.0</property>
+            <property name="use-markup">true</property>
             </object>
             <packing>
               <property name="left-attach">0</property>
@@ -82,9 +85,10 @@
 
         <child>
           <object class="GtkLabel" id="labelBroadcastAddress">
-            <property name="label">Broadcast Address:</property>
+            <property name="label">&lt;b&gt;Broadcast Address:&lt;/b&gt;</property>
             <property name="hexpand">false</property>
             <property name="xalign">0.0</property>
+            <property name="use-markup">true</property>
             </object>
             <packing>
               <property name="left-attach">0</property>
@@ -94,9 +98,10 @@
 
         <child>
           <object class="GtkLabel" id="labelAvailableHosts">
-            <property name="label">Available Hosts:</property>
+            <property name="label">&lt;b&gt;Available Hosts:&lt;/b&gt;</property>
             <property name="hexpand">false</property>
             <property name="xalign">0.0</property>
+            <property name="use-markup">true</property>
             </object>
             <packing>
               <property name="left-attach">0</property>
