@@ -27,14 +27,14 @@ public:
 
         buttonIpConvert->signal_clicked().connect(
             [&] {
-                labelIpBin->set_text("Bin IP: " + convertedIpToBin(extractIpFromString(entryIpInput->get_text())));
+                labelIpBin->set_markup("<b>Bin IP: </b>" + convertedIpToBin(extractIpFromString(entryIpInput->get_text())));
                 if(!(entryHostsWanted->get_text().empty())) {
                     entryPrefix->set_text(hostsToPrefixString(entryHostsWanted->get_text()));
                 }
-                labelAvailableHosts->set_text("Available Hosts: " + prefixToHostsString(entryPrefix->get_text()));
-                labelSubnetMask->set_text("Subnet Mask: " + prefixToSubnetString(entryPrefix->get_text()));
-                labelNetworkAddress->set_text("Network Address: " + findNetworkAddress(entryIpInput->get_text(), entryPrefix->get_text()));
-                labelBroadcastAddress->set_text("Broadcast Address: " + findBroadcastAddress(entryIpInput->get_text(), entryPrefix->get_text()));
+                labelAvailableHosts->set_markup("<b>Available Hosts: </b>" + prefixToHostsString(entryPrefix->get_text()));
+                labelSubnetMask->set_markup("<b>Subnet Mask: </b>" + prefixToSubnetString(entryPrefix->get_text()));
+                labelNetworkAddress->set_markup("<b>Network Address: </b>" + findNetworkAddress(entryIpInput->get_text(), entryPrefix->get_text()));
+                labelBroadcastAddress->set_markup("<b>Broadcast Address: </b>" + findBroadcastAddress(entryIpInput->get_text(), entryPrefix->get_text()));
                                }); //I need to figure out what the fuck happens here
 
         show_all_children();
